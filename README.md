@@ -52,7 +52,9 @@ If issues occur (phone restart etc.) simply run: `ifdown br0 && ifup br0`.
 
 ## Sources
 How to bridge: https://help.ubuntu.com/community/NetworkConnectionBridge
+
 Revert networking services: https://askubuntu.com/questions/1031709/ubuntu-18-04-switch-back-to-etc-network-interfaces
+
 USB Power management: https://askubuntu.com/questions/185274/how-can-i-disable-usb-autosuspend-for-a-specific-device
 
 # Solution for Windows 10
