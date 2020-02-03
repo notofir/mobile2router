@@ -3,7 +3,7 @@
 Disclaimer: Author takes no responsibility, nor liability for any kind of legal, technological, and any other type of
 consequences. Using this guide is at your own risk.
 ***
-This guide shows how to share USB tethering with router. Mobile HotSpot sometimes isn't suitable for managing home
+This guide shows how to share USB tethering with router via Windows 10/Ubuntu Server 19.10. Mobile HotSpot sometimes isn't suitable for managing home
 network, due to multiple devices, WiFi coverage etc.
 
 # Solution for Raspberry Pi 3 v1.2 with Ubuntu Server 19.10
