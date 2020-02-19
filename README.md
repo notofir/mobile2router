@@ -9,7 +9,7 @@ network, due to multiple devices, WiFi coverage etc.
 # Solution for Raspberry Pi 3 v1.2 with Ubuntu Server 19.10
 ## Notes
 * Following this guide removes Ubuntu's new networking services and installs old ones.
-* tlp software should disable USB auto-suspend by default. This means Ubuntu won't stop supplying power to your phone.
+* tlp software should disable USB auto-suspend. This means Ubuntu won't stop supplying power to your phone.
 * Connecting phone and router is basically made with bridge.
 ## Setup
 Connect phone and turn on USB Tethering. If you need internet from phone, run `sudo dhclient usb0`.
@@ -23,8 +23,13 @@ sudo systemctl disable systemd-networkd.socket systemd-networkd networkd-dispatc
 sudo apt -y purge nplan netplan.io
 ```
 
+Edit tlp settings ```#sudo vim /etc/default/tlp```: Change "USB_AUTOSUSPEND=1" to "USB_AUTOSUSPEND=0".
+
+Reduce networking startup timeout ```#sudo vim /etc/systemd/system/network-online.targets.wants/networking.service```: Change "TimeoutStartSec=5min" to "TimeoutStartSec=12sec".
+
 Put this in /etc/network/interfaces (adapt if needed):
-```bash
+```#sudo vim /etc/network/interfaces
+bash
 auto usb0
 iface usb0 inet dhcp
 
@@ -56,6 +61,8 @@ How to bridge: https://help.ubuntu.com/community/NetworkConnectionBridge
 Revert networking services: https://askubuntu.com/questions/1031709/ubuntu-18-04-switch-back-to-etc-network-interfaces
 
 USB Power management: https://askubuntu.com/questions/185274/how-can-i-disable-usb-autosuspend-for-a-specific-device
+
+How to reduce networking startup timeout: https://askubuntu.com/questions/841112/very-slow-boot-time-ubuntu-a-start-job-is-running-for-raise-network-interfaces
 
 # Solution for Windows 10
 1. Connect router to computer with Ethernet via router's WAN port.
