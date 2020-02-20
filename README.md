@@ -23,9 +23,9 @@ sudo systemctl disable systemd-networkd.socket systemd-networkd networkd-dispatc
 sudo apt -y purge nplan netplan.io
 ```
 
-Edit tlp settings ```#sudo vim /etc/default/tlp```: Change "USB_AUTOSUSPEND=1" to "USB_AUTOSUSPEND=0".
+Edit tlp settings `#sudo vim /etc/default/tlp`: Change "USB_AUTOSUSPEND=1" to "USB_AUTOSUSPEND=0".
 
-Reduce networking startup timeout ```#sudo vim /etc/systemd/system/network-online.targets.wants/networking.service```: Change "TimeoutStartSec=5min" to "TimeoutStartSec=12sec".
+Reduce networking startup timeout `#sudo vim /etc/systemd/system/network-online.targets.wants/networking.service`: Change "TimeoutStartSec=5min" to "TimeoutStartSec=12sec".
 
 Put this in /etc/network/interfaces (adapt if needed):
 ```#sudo vim /etc/network/interfaces
@@ -55,6 +55,8 @@ netmask 255.255.255.0
 Then, run `service network restart`.
 If issues occur (phone restart etc.) simply run: `ifdown br0 && ifup br0`.
 
+For a more stable solution for recurring errors, run `sudo crontab -e`, then choose editor to add the following line: `* * * * * /usr/bin/python3 /home/ubuntu/job.py >> ~/cron.log 2>&1`. You can download job.py from this repository.
+
 ## Sources
 How to bridge: https://help.ubuntu.com/community/NetworkConnectionBridge
 
@@ -63,6 +65,10 @@ Revert networking services: https://askubuntu.com/questions/1031709/ubuntu-18-04
 USB Power management: https://askubuntu.com/questions/185274/how-can-i-disable-usb-autosuspend-for-a-specific-device
 
 How to reduce networking startup timeout: https://askubuntu.com/questions/841112/very-slow-boot-time-ubuntu-a-start-job-is-running-for-raise-network-interfaces
+
+Running python cron jobs: https://medium.com/@gavinwiener/how-to-schedule-a-python-script-cron-job-dea6cbf69f4e
+
+Testing internet connection with Python3: https://stackoverflow.com/questions/50558000/test-internet-connection-for-python3
 
 # Solution for Windows 10
 1. Connect router to computer with Ethernet via router's WAN port.
