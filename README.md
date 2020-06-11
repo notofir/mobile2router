@@ -15,7 +15,7 @@ Connect phone and turn usb-tethering on.
 
 ## Power supply your phone.
 Find idVendor:idProduct of your phone with `lsusb`
-`echo -e "ACTION==\"add\", SUBSYSTEM==\"usb\", ATTR{idVendor}==\"<idVendor>\", ATTR{idProduct}==\"<idProduct>\", TEST==\"power/control\", ATTR{power/control}:=\"on\"" > /etc/udev/rules.d/99-mobile2router.rules`
+`echo -e "ACTION==\"add\", SUBSYSTEM==\"usb\", ATTR{idVendor}==\"<idVendor>\", ATTR{idProduct}==\"<idProduct>\", TEST==\"power/autosuspend\", TEST==\"power/control\", ATTR{power/control}:=\"on\" ATTR{power/autosuspend}=\"-1\"" > /etc/udev/rules.d/99-mobile2router.rules`
 
 `reboot` to take effect.
 
