@@ -22,7 +22,7 @@ Changer router's Internet Setup:
 Change router's DHCP Server settings to use a different pool than the modem's. For example, 192.168.1.1
 
 
-## Power supply your phone - experimental
+## Work with Android phone - experimental
 NOTE: This doesn't work well since power is cut off after phone reaches 100%
 Make sure phone2router.yaml matches your networks and run `chmod +x phone.sh && sudo ./phone.sh`
 
